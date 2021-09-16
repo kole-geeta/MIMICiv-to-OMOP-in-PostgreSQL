@@ -35,7 +35,7 @@ Among the 37 OMOP tables, the one related to hospital costs were not applicable,
 |18|cdm_procedure_occurrence|12451068|14|
 |19|cdm_location|1|8|
 
-STEP 1: Vocabulary Refresh
+**STEP 1: Vocabulary Refresh**
 
 All vocabularies of the Standardized Vocabularies are consolidated into the same common format. This relieves the researchers from having to understand and handle multiple different formats and life-cycle conventions of the originating vocabularies.In order to obtain the Standardized Vocabularies, you can download the latest version from ATHENA and load it into your local database. To download a zip file with all Standardized Vocabularies tables, select all the vocabularies you need for your OMOP CDM. Vocabulary with Standard Concepts and very common usage are preselected. Add vocabularies that are used in your source data. https://ohdsi.github.io/TheBookOfOhdsi/StandardizedVocabularies.html
 
@@ -46,15 +46,15 @@ The alignment phase to standardize local MIMIC codes into OMOP standard codes ha
 
 Another schema named voc_dataset was created which combined the standard Athena vocabulary tables from etl_dataset with tmp_custom mapping. 
 
-STEP 2: Create empty CDM tables
+**STEP 2: Create empty CDM tables**
 
 Creates empty cdm tables in the ETL dataset.
 
-STEP 3: Staging tables (temporary intermediate tables)
+**STEP 3: Staging tables (temporary intermediate tables)**
 
 Create a snapshot of the source data. The snapshot data is stored in staging source tables with prefix "src_".
 
-STEP 4: Perform ETL Logic
+**STEP 4: Perform ETL Logic**
   - Clean source data: filter out rows to be not used, format values, apply some business rules. This step results in creating "clean" intermediate tables with prefix "lk_" and suffix "clean".
 
   - Map distinct source codes to concepts in vocabulary tables. The step results in creating intermediate tables with prefix "lk_" and suffix "concept".
@@ -66,7 +66,7 @@ STEP 4: Perform ETL Logic
   - Distribute mapped data by target CDM tables according to target_domain_id values.
   
 
-STEP 5: Unloading
+**STEP 5: Unloading**
 
 The last step, unload, populates the final OMOP CDM dataset. Only CDM and vocabulary tables are kept here, prefixes and additional fields are removed. The final OMOP CDM dataset can be analysed with OHDSI tools as ATLAS or DQD.
 
