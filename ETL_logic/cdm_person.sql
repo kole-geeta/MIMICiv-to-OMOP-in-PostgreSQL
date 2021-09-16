@@ -165,4 +165,4 @@ LEFT JOIN
  
 DROP TABLE etl_dataset.tmp_subject_ethnicity;
 
-c
+
