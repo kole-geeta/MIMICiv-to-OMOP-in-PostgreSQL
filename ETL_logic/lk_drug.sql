@@ -100,7 +100,7 @@ LEFT JOIN
         ON  vc.concept_code = src.ndc_source_code --this covers 85% of direct mapping but no standard
         AND vc.vocabulary_id = src.ndc_source_vocabulary -- NDC
 LEFT JOIN
-    etl_dataset.voc_concept_relationship vcr
+    voc_dataset.concept_relationship vcr
         ON  vc.concept_id = vcr.concept_id_1 
         and vcr.relationship_id = 'Maps to'
 LEFT JOIN
